@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+html, body {
+    font-size: 18px;
+    /*1 vh == 1% от размера viewport'а / видимой области*/
+    min-height: 100vh;
+    line-height: 1;
+}
+
+button {
+    cursor: pointer;
+}
+
+input, button {
+    /*Используется для отображения элемента с помощью использования оформления платформы пользователя.*/
+    /*Поддерживают все браузеры на chromium'е (chrome. opera, яндекс и тд), safari*/
+    -webkit-appearance: none
+}

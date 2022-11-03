@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Title of page</title>
+		
+		<!-- Решил подгружать шрифт с gooogle font'а, на всякий случай -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+		<style>
+			body {
+				font-family: 'Oswald', sans-serif;
+				margin: 0px 50px;
+			}
+			.buttonContainer {
+				width: 500px;
+				justify-content: flex-start;
+			}
+			.button {
+				padding: 20px 40px;
+				margin: 10px 100px 15px 0px;
+				border-radius: 10px;
+				text-transform: uppercase;
+				font-weight: normal;
+				font-size: 18px;
+				color: rgb(39, 31, 21);
+				display: inline-flex;
+				background: linear-gradient(90deg, rgba(244,156,24,1) 0%, rgba(254,207,3,1) 100%);
+				align-items: center;
+				/* Заметил, что у вас там тень с градиентом и не придумал, как это нормально сделать
+				   Поэтому вот так */
+				box-shadow: -15px 15px 50px 10px rgba(244, 156, 24, 0.25), 
+							15px -15px 50px 10px rgba(254,207,3,0.25);
+				transition: 0.3s;
+			}	
+			.button:hover {
+				box-shadow: -15px 15px 50px 10px rgba(244, 156, 24, 0.5), 
+							15px -15px 50px 10px rgba(254,207,3,0.5);;
+			}
+			.playIcon {
+				margin: 0px 20px 0px -20px;
+				font-size: 45px;
+			}
+			.textContainer {
+				margin-bottom: 20px;
+				margin-top: 100px;
+				display: flex;
+    			flex-flow: column wrap;
+			}
+			.field {
+				display: inline-flex;
+				padding: 12px 20px;
+				width: 450px;
+				font-size: 24px;
+				box-shadow: none;
+				border-radius: 10px;
+				opacity: 0.3;
+				border-color: solid rgb(0,0,0);
+				transition: 0.3s;
+			}
+			.field:hover {
+				opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>Мои мемуары</h1>
+			<h2>Рождение</h2>
+			<div id="book">
+				<p>
+					Мой день рождения совпал с днем труда - 1 мая!
+					Поэтому я люблю работать )
+				</p>
+			</div>
+		</div>
+		
+		<div class="textContainer">
+			Lable
+			<input type="text" class="field" id="field" placeholder="Введите текст"/>
+		</div>
+		<div class="buttonContainer">
+			<div class="button" onClick="createPost()">
+				<!-- С сайта iconify подтягиваю иконку -->
+				<iconify-icon icon="bi:play-fill" class="playIcon"></iconify-icon>
+				Опубликовать комментарий
+			</div>
+			<div class="button" onClick="deletePost()">Удалить последний</div>
+			<div class="button" onClick="deleteAllPost()">Удалить все</div>
+		</div>
+		
+		
+		<script>
+			function createPost() {
+				let inputPost = document.getElementById('field');
+				let post = inputPost.value;
+				let book = document.getElementById('book');
+				let newParagraph = document.createElement('p');
+				book.append(newParagraph);
+				newParagraph.innerHTML = post;
+				inputPost.value = '';
+			}
+			
+			function deletePost() {
+				const book = document.getElementById('book');
+				book.lastElementChild.remove();
+			}
+
+			function deleteAllPost() {
+				const book = document.getElementById('book');
+				const allParagraphsCount = book.childElementCount;
+				for(let i = 0; i < allParagraphsCount; i++) {
+					book.lastElementChild.remove();
+				}
+				
+			}
+		</script>
+
+		<script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+	</body>
+</html>
+
+<!--
+	Задача на практике.
+		Создать поле для ввода. 
+		После нажатия на кнопку "Опубликовать комментарий" будет создан новый
+		текст с содержимым, которое ввел человек.
+		
+	Домашняя работа (по уровням):
+		1. Создать и стилизовать кнопку в соответствии с изображением. (1 балл)
+			Рекомендации и требования:
+			- текст должен быть изменяем
+			- изображение (начала проигрывания) найти самостоятельно
+		2. Создать и стилизовать поле для ввода в соответствии с изображением (1 балл)
+		
+		3.* В нашем проекте реализовать функционал удаления последнего комментария и/или всех (1 балл)
+			
+			
+-->

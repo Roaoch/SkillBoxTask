@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*Просто фон*/
+        .grayBox, .notGrayBox {
+            display: inline-block;
+            width: 500px;
+            height: 500px;
+            background-color: gray;
+            margin-bottom: 100px;
+            margin-right: 150px;
+        }
+        .notGrayBox {
+            position: relative;
+        }
+
+        /*Стандартное отображение, ни top, ни left, ни bottom ни right не дают результата - положение определяется потоком страницы*/
+        .static {
+            display: inline-block;
+            position: static;
+            width: 200px;
+            height: 200px;
+            top: 100500;
+            left: -100500;
+            background-color: brown;
+        }
+        /*Координаты привязаны к родительскому объекту, если родительский объект - body, ведёт себя также, как и absolute*/
+        .relative {
+            display: inline-block;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            top: 10px;
+            left: 10px;
+            background-color: blanchedalmond;
+        }
+        /*Координаты привязаны ко всей странице, но если у его родительского объекта position: relative, то привязывается к родителю. Главное отличие от relative: абсолютеый
+        объект не влияет на поток, читай, на позиционированние других элементов*/
+        .absolute {
+            display: inline-block;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 300px;
+            left: 300px;
+            background-color: blueviolet;
+        }
+        /*Также как и absolute не влияет на поток, но привязыается к координатам viewport'а / экрана*/
+        .fixed {
+            display: inline-block;
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            bottom: 0;
+            right: 0;
+            background-color: cadetblue;
+        }
+        /*Пока не достиг определённого сещания по отношению к экрану, ведёт себя как static, потом же ведёт себя как fixed, но перемещается только в рамках своего родителя */
+        .sticky {
+            position: sticky;
+            width: 200px;
+            height: 200px;
+            top: 10px;
+            background-color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <div class="grayBox">
+        <div class="static">
+            static
+        </div>
+    </div>
+
+    <div class="grayBox">
+        <div class="relative">
+            relative
+        </div>
+    </div>
+
+    <div class="grayBox">
+        <div class="sticky">
+            sticky
+        </div>
+    </div>
+
+    <div class="grayBox">
+        <div class="absolute">
+            absolute
+        </div>
+    </div>
+    <div class="notGrayBox">
+        <div class="absolute">
+            absolute
+        </div>
+    </div>
+
+    <div class="grayBox">
+        <div class="fixed">
+            fixed
+        </div>
+    </div>
+    
+</body>
+</html>
