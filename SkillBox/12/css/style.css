@@ -24,8 +24,12 @@ section {
     padding-bottom: var(--section-margin);
 }
 
+section:last-child {
+    margin-bottom: 0;
+}
+
 .container {
-    padding: 0 75px;
+    padding: 0 4%;
 }
 
 .flex {
@@ -43,6 +47,15 @@ section {
     font-size: 23px;
     color: var(--white);
     background-color: var(--orange);
+    transition: background-color 0.1s ease-in-out;
+}
+
+.btn:hover, .btn:focus {
+    background-color: var(--hover-orange);
+}
+
+.btn:active {
+    background-color: var(--active-orange);
 }
 
 .third-headline {
@@ -58,15 +71,6 @@ section {
 
 }
 
-.navigation-item {
-    margin-right: var(--nav-margin);
-    font-weight: 600;
-    font-size: 18px;
-}
-.navigation-item:last-child {
-    margin-right: 0;
-}
-
 /*HEADER*/
 
 .header {
@@ -75,6 +79,67 @@ section {
     border-radius: 0px 0px 32px 32px;
     background-color: var(--white);
     box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.1);
+}
+
+.navigation {
+    margin-left: 270px;
+}
+
+.navigation-item {
+    position: relative;
+    margin-right: var(--nav-margin);
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.1s ease-in-out;
+}
+
+.navigation-item:last-child {
+    margin-right: 0;
+}
+
+.navigation-item::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background-color: rgba(0, 0, 0, 0);
+    transform: scaleX(0);
+    transition: background-color 0.3s ease-in-out,
+                transform 0.3s ease-in-out;
+}
+
+.navigation-item:hover::after {
+    background-color: var(--hover-orange);
+    transform: scaleX(1);
+}
+
+.navigation-item:focus {
+    outline-offset: 1px;
+    outline: 2px solid var(--hover-orange);
+}
+
+.navigation-item:active {
+    color: var(--active-orange);
+}
+
+.navigation-item:active::after {
+    background-color: var(--active-orange);
+}
+
+.header-search:hover {
+    stroke: var(--hover-orange);
+}
+
+.header-search:hover path {
+    stroke: var(--hover-orange);
+}
+
+.header-search:focus {
+    stroke: var(--black);
+    outline: 2px solid var(--hover-orange);
+    outline-offset: 1px;
 }
 
 /*MAIN SECTION*/
@@ -126,6 +191,10 @@ section {
     line-height: 32px;
 }
 
+.main-section-table {
+    width: 100%;
+}
+
 .table-big {
     min-width: 868px;
     padding-top: 426px;
@@ -152,12 +221,23 @@ section {
 
 .big-content-btn {
     padding: 19px 35px;
-    border: 3px solid #FF9900;
+    border: 3px solid var(--orange);
     border-radius: 16px;
     font-weight: 700;
     font-size: 16px;
     color: var(--white);
-    background: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.1s ease-in-out,
+                border-color 0.1s ease-in-out;
+}
+
+.big-content-btn:hover, .big-content-btn:focus {
+    background-color: var(--orange);
+}
+
+.big-content-btn:active {
+    border-color: var(--active-orange);
+    background-color: var(--active-orange);
 }
 
 .table-small {
@@ -203,10 +283,24 @@ section {
 .how-nav-item {
     margin-right: 85px;
     font-size: 18px;
+    transition: color 0.1s ease-in-out;
 }
 
 .how-nav-item:last-child {
     margin-right: 0;
+}
+
+.how-nav-item:hover {
+    color: var(--hover-orange);
+}
+
+.how-nav-item:focus {
+    outline: 2px solid var(--hover-orange);
+    outline-offset: 1px;
+}
+
+.how-nav-item:active {
+    color: var(--active-orange);
 }
 
 .how-table-par {
@@ -223,6 +317,7 @@ section {
     padding: 20px 38px;
     font-size: 16px;
     margin-right: 32px;
+    transition: background-color 0.1s ease-in-out;
 }
 
 .how-table-document {
@@ -231,6 +326,20 @@ section {
     border-radius: 16px;
     background-color: rgba(0, 0, 0, 0);
     font-size: 16px;
+    transition: background-color 0.1s ease-in-out,
+                border-color 0.1s ease-in-out,
+                color 0.1s ease-in-out;
+}
+
+.how-table-document:hover, .how-table-document:focus {
+    background-color: #666;
+    border-color: #666;
+    color: var(--white);
+}
+
+.how-table-document:active {
+    background-color: var(--black);
+    border-color: var(--black);
 }
 
 /*QA*/
@@ -247,11 +356,65 @@ section {
     padding: 30px 0;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #cacaca;
+    border: 1px solid #cacaca;
+    border-left: none;
+    border-right: none;
+    transition: border-color 0.1s ease-in-out;
 }
 
-.qa-list-item:last-child {
-    border-bottom: 1px solid #cacaca;
+.qa-list-item:not(:first-child) {
+    margin-top: -1px;
+}
+
+.qa-item-headline {
+    transition: color 0.1s ease-in-out;
+}
+
+.qa-item-svg ellipse {
+    transition: fill 0.1s ease-in-out;
+}
+
+.qa-item-svg path {
+    transform-origin: center center;
+    transition: fill 0.1s ease-in-out,
+                transform 0.1s ease-in-out;
+}
+
+.qa-list-item:hover + .qa-list-item, .qa-list-item:focus  + .qa-list-item {
+    border-top-color: rgba(0, 0, 0, 0);
+}
+
+.qa-list-item:hover, .qa-list-item:focus {
+    border-color: var(--hover-orange);
+}
+
+.qa-list-item:hover .qa-item-headline, .qa-list-item:focus .qa-item-headline {
+    color: var(--hover-orange);
+}
+
+.qa-list-item:hover .qa-item-svg ellipse, .qa-list-item:focus .qa-item-svg ellipse {
+    fill: var(--hover-orange);
+}
+
+.qa-list-item:hover .qa-item-svg path, .qa-list-item:focus .qa-item-svg path {
+    fill: var(--white);
+}
+
+.qa-list-item:active {
+    border-color: #cacaca;
+}
+
+.qa-list-item:active .qa-item-headline{
+    color: var(--black);
+}
+
+.qa-list-item:active .qa-item-svg ellipse{
+    fill: #cacaca;
+}
+
+.qa-list-item:active .qa-item-svg path{
+    fill: var(--black);
+    transform: rotate(45deg);
 }
 
 /*FOOTER*/
@@ -265,6 +428,7 @@ section {
 
 .footer-flex {
     justify-content: space-between;
+    align-items: flex-start;
 }
 
 .footer-list {
@@ -273,14 +437,48 @@ section {
 
 .footer-list-item {
     line-height: 36px;
+    transition: color 0.1s ease-in-out;
+}
+
+
+
+.footer-list-item:hover {
+    color: var(--hover-orange);
+} 
+
+.footer-list-item:focus {
+    outline: 2px solid var(--hover-orange);
+    outline-offset: 1px;
+}
+
+.footer-list-item:active {
+    color: var(--active-orange);
 }
 
 .footer-logos-item:not(:last-child) {
     margin-right: 25px;
 }
 
+.footer-logos-item * {
+    transition: fill 0.1s ease-in-out;
+}
+
+.footer-logos-item:hover * {
+    fill: var(--hover-orange);
+}
+
+.footer-logos-item:focus {
+    outline: 2px solid var(--hover-orange);
+    outline-offset: 1px;
+}
+
+.footer-logos-item:active * {
+    fill: var(--active-orange);
+}
+
 .footer-form {
     flex-direction: column;
+    padding-left: 103px;
 }
 
 .footer-form-headline {
@@ -291,18 +489,43 @@ section {
 
 .footer-form-text {
     width: 546px;
-    height: 46px;
+    height: 36px;
     padding: 14px 24px;
     margin-bottom: 32px;
     border: none;
     border-radius: 16px;
     color: #cacaca;
     background-color: #414141;
+    transition: background-color 0.1s ease-in-out;
 }
 
 .footer-form-text:last-child {
     height: 136px;
     margin-bottom: 32px;
+}
+
+.footer-form-text:hover, .footer-form-text:focus {
+    background-color: #666;
+}
+
+.footer-form-text:active {
+    color: var(--white);
+}
+
+.footer-form-message {
+    position: relative;
+    height: calc(150px - 28px);
+}
+.footer-form-message::placeholder {
+    position: relative;
+    top: calc(-150px / 2 + 28px);
+}
+
+.footer-form-btn-cotainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .footer-form-btn {
@@ -311,12 +534,43 @@ section {
     font-size: 16px;
 }
 
+.footer-form-checbox {
+    visibility: hidden;
+}
+
 .footer-form-lable {
+    position: relative;
     font-size: 16px;
     color: #cacaca;
 }
 
+.footer-form-lable::before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 14px;
+    width: 14px;
+    bottom: 2px;
+    left: -18px;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+}
+
+.footer-form-checbox:checked+.footer-form-lable::before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 14px;
+    width: 14px;
+    bottom: 2px;
+    left: -18px;
+    background-image: url("../img/Okay.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .footer-par {
+    align-self: center;
     max-width: 20%;
     line-height: 32px;
 }
