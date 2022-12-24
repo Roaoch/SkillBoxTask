@@ -1,0 +1,25 @@
+@media (max-width: 1024px) {
+    /*HEADER*/
+    .header-menu {
+        display: block;
+    }
+
+    .header-logo {
+        justify-self: center;
+    }
+
+    .header-logo-svg {
+        width: 150px;
+        height: 48px;
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    /*MAIN SECTION*/
+    .table-big {
+        margin-right: 0;
+        max-width: 100%;
+    }
+}
